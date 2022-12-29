@@ -1,0 +1,24 @@
+1. Why do we need to `import React from "react"` in our files?
+- React sa interpretare o leggere JSX
+
+2. If I were to console.log(app) in index.js, what would show up?
+- Un oggetto, in questo caso App.js dove sono inserite tutte le components
+
+3. What's wrong with this code:
+```
+const page = (
+    <h1>Hello</h1>
+    <p>This is my website!</p>
+)
+```
+- Gli elementi devono stare dentro un singolo elemento,
+in questo caso un <div></div> o un fragment <>  </>
+
+4. What does it mean for something to be "declarative" instead of "imperative"?
+- Declarative means I can tell the computer WHAT to do 
+and expect it to handle the details. Imperative means I need
+to tell it HOW to do each step.
+
+5. What does it mean for something to be "composable"?
+Possiamo creare piccole componenti che possono essere assemblate insieme
+per l' App finale
