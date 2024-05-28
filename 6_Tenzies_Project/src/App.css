@@ -1,0 +1,60 @@
+* {
+  box-sizing: border-box;
+}
+
+.app {
+  background-color: rgb(200, 220, 255);
+  padding: 20px;
+}
+
+.main {
+  background-color: rgb(255, 245, 235);
+  border-radius: 5px;
+  padding: 20px;
+  border: 1px solid black;
+}
+
+.main > h1, h4 {
+  display: flex;
+  justify-content: center;
+}
+
+.dice-container {
+  display: grid;
+  grid-template-columns: 150px 150px 150px 150px 150px;
+  grid-template-rows: 150px 150px;
+  justify-content: center;
+}
+
+.die {
+  display: flex;
+  justify-content: center;
+  height: 100px;
+  width: 100px;
+  border: 2px solid black;
+  border-radius: 5px;
+  margin: 10px;
+  font-size: 70px;
+  box-shadow: 5px 5px;
+  cursor: pointer;
+}
+/* #C8DCFF */
+/* #78FF5A */
+
+.btn {
+  display: flex;
+  justify-content: center;
+  margin: 70px;
+}
+
+.button {
+  border: 1px solid  rgb(0, 0, 0);
+  border-radius: 5px;
+  background-color: rgb(220, 185, 255);
+  font-size: 50px;
+  padding: 10px 50px 10px 50px;
+  color: rgb(0, 0, 0);
+  box-shadow: 5px 5px;
+  cursor: pointer;
+}
+
