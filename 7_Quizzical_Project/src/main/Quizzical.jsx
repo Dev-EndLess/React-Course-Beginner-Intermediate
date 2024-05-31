@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom"; // Importa Navigate
 import { decode } from "html-entities";
 import data from "../mockData/data";
 import Button from "../components/Button";
-import { nanoid } from "nanoid";
-import { Navigate } from "react-router-dom"; // Importa Navigate
-
 
 function Quizzical({ onPlayAgain }) {
+  const navigate = useNavigate();
+  // Mock API data
   // Decodifica e mescola i dati solo una volta, utilizzando useEffect
   useEffect(() => {
     const decodedData = data.map((item) => ({
@@ -29,28 +29,47 @@ function Quizzical({ onPlayAgain }) {
     setShuffledAnswers(shuffled);
   }, []);
 
+  // useEffect(() => {
+  //   async function getData() {
+  //     try {
+  //       const response = await fetch(`https://opentdb.com/api.php?amount=5`);
+  //       if (!response.ok) {
+  //         throw new Error(`HTTP error! status: ${response.status}`);
+  //       }
+  //       const result = await response.json();
+  //       // Decodifica domande e risposte
+  //       const decodedData = result.results.map((item) => ({
+  //         ...item,
+  //         question: decode(item.question),
+  //         correct_answer: decode(item.correct_answer),
+  //         incorrect_answers: item.incorrect_answers.map((answer) =>
+  //           decode(answer)
+  //         ),
+  //       }));
+  //       const shuffled = decodedData.reduce((acc, item, index) => {
+  //         const allAnswers = shuffleArray([
+  //           ...item.incorrect_answers,
+  //           item.correct_answer,
+  //         ]);
+  //         acc[index] = allAnswers;
+  //         return acc;
+  //       }, {});
+
+  //       setAPIData(decodedData);
+  //       setShuffledAnswers(shuffled);
+  //     } catch (error) {
+  //       console.error("Error fetching data: ", error);
+  //     }
+  //   }
+  //   getData();
+  // }, []);
+
   const [APIdata, setAPIData] = useState([]);
   const [shuffledAnswers, setShuffledAnswers] = useState({});
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [isPlayAgainDisabled, setIsPlayAgainDisabled] = useState(true);
   const [showResults, setShowResults] = useState(false);
-
-  // useEffect(() => {
-  //   async function getData() {
-  //     const response = await fetch(`https://opentdb.com/api.php?amount=5`)
-  //     const data = await response.json()
-  // Decodifica domande e risposte
-  // const decodedData = data.results.map(item => ({
-  //   ...item,
-  //   question: decode(item.question),
-  //   correct_answer: decode(item.correct_answer),
-  //   incorrect_answers: item.incorrect_answers.map(answer => decode(answer))
-  // }));
-  // setAPIData(decodedData);
-  //   }
-  //   getData()
-  // }, [])
 
   console.log(APIdata);
 
@@ -80,6 +99,11 @@ function Quizzical({ onPlayAgain }) {
     setShowResults(true); // Mostra i risultati
   };
 
+  const handlePlayAgain = () => {
+    onPlayAgain(); // Chiamata al prop per resettare lo stato del gioco
+    navigate("/");
+  };
+
   return (
     <div className="main">
       <section class="wrapper">
@@ -97,16 +121,20 @@ function Quizzical({ onPlayAgain }) {
             <div className="answer-box">
               {allAnswers.map((answer, idx) => (
                 <Button
-                key={idx}
-                answer={answer}
-                isSelected={selectedAnswers[index] === answer}
-                onSelect={() => handleSelectAnswer(index, answer)}
-                isCorrect={showResults && answer === item.correct_answer}
-                isIncorrect={showResults && selectedAnswers[index] === answer && answer !== item.correct_answer}
-                isDisabled={showResults} 
-              >
-                {answer}
-              </Button>
+                  key={idx}
+                  answer={answer}
+                  isSelected={selectedAnswers[index] === answer}
+                  onSelect={() => handleSelectAnswer(index, answer)}
+                  isCorrect={showResults && answer === item.correct_answer}
+                  isIncorrect={
+                    showResults &&
+                    selectedAnswers[index] === answer &&
+                    answer !== item.correct_answer
+                  }
+                  isDisabled={showResults}
+                >
+                  {answer}
+                </Button>
               ))}
             </div>
             <br />
@@ -119,7 +147,12 @@ function Quizzical({ onPlayAgain }) {
         <button className="button-30" onClick={checkAnswers}>
           Check Answers
         </button>
-        <button className="button-30" disabled={isPlayAgainDisabled}>
+
+        <button
+          className="button-30"
+          disabled={isPlayAgainDisabled}
+          onClick={handlePlayAgain}
+        >
           Play Again
         </button>
       </div>

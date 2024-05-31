@@ -1,23 +1,29 @@
 import './App.css';
-import Quizzical from './main/Quizzical';
 import Home from './main/Home';
+import Quizzical from './main/Quizzical';
 import { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 
 function App() {
-
-  const [start, setStart] = useState(false)
+  const [start, setStart] = useState(false);
 
   function startGame() {
-    setStart(prevState => !prevState)
+    setStart(true);
+  }
+
+  function restartGame() {
+    setStart(false);
   }
 
   return (
-    <div className="app">
-      <Quizzical/>
-      {/* {start ?
-      <Quizzical/> : <Home 
-      startGame={startGame}/>} */}
-    </div>
+    <Router>
+      <div className="app">
+        <Routes>
+          <Route path="/" element={start ? <Navigate to="/quizzical" /> : <Home startGame={startGame} />} />
+          <Route path="/quizzical" element={<Quizzical onPlayAgain={restartGame} />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

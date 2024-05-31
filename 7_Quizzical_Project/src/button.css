@@ -92,13 +92,13 @@
 }
 
 .button-74.correct {
-  background-color: #4CAF50; /* Verde */
-  color: white;
+  background-color: #94d7a2; /* Verde */
+  color: #4D5B9E;
 }
 
 .button-74.incorrect {
-  background-color: #F44336; /* Rosso */
-  color: white;
+  background-color: #f8bcbc; /* Rosso */
+  color: #4D5B9E;
 }
 
 .button-30:disabled {

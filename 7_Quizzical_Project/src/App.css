@@ -53,8 +53,9 @@ non ne ho idea: #4D5B9E
 }
 
 .home > button:hover {
-  background-color: #ffffff;
+  background-color: #b8eeff;
   color: #4d5b9e;
+  border: 2px solid #4d5b9e;
   animation: none;
 }
 
@@ -67,6 +68,7 @@ non ne ho idea: #4D5B9E
   display: flex;
   justify-content: center;
   margin-top: 40px;
+  color: rgb(0, 180, 255);
 }
 
 .question-box {
@@ -84,95 +86,7 @@ non ne ho idea: #4D5B9E
   flex-direction: row;
 }
 
-.answer-button {
-  background-color: #ffffff;
-  font-weight: bold;
-  border: 1.5px solid #293264;
-  border-radius: 12px;
-  padding: 5px;
-  cursor: pointer;
-  padding-left: 20px;
-  padding-right: 20px;
-  margin: 20px;
-  /* pointer-events: none */
-}
-.correct-answer {
-  background-color: #94d7a2;
-  font-weight: bold;
-  border: 1.5px solid #94d7a2;
-  border-radius: 12px;
-  padding: 5px;
-  cursor: pointer;
-  padding-left: 20px;
-  padding-right: 20px;
-  margin: 20px;
-}
-.wrong-answer {
-  background-color: #f8bcbc;
-  font-weight: bold;
-  border: 1.5px solid #f8bcbc;
-  border-radius: 12px;
-  padding: 5px;
-  cursor: pointer;
-  padding-left: 20px;
-  padding-right: 20px;
-  margin: 20px;
-}
-
-.answer-button > span {
-  font-size: 14px;
-  color: #293264;
-}
-
-.selected-button {
-  background-color: #4d5b9e;
-  color: white;
-  font-weight: bold;
-  border: 2px solid #d6dbf5;
-  border-radius: 10px;
-  padding: 5px;
-  cursor: pointer;
-  padding-left: 20px;
-  padding-right: 20px;
-  margin: 20px;
-}
-
-.disabled-button {
-  background-color: #ffffff;
-  font-weight: bold;
-  border: 1.5px solid #293264;
-  border-radius: 12px;
-  padding: 5px;
-  cursor: pointer;
-  padding-left: 20px;
-  padding-right: 20px;
-  margin: 20px;
-  pointer-events: none;
-}
-
-.check-answer {
-  position: relative;
-  display: inline-block;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #4d5b9e;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  border: 1.5px solid #4d5b9e;
-  border-radius: 12px;
-  padding: 15px;
-  cursor: pointer;
-  padding-left: 30px;
-  padding-right: 30px;
-  margin: 20px;
-}
-
-.score-message {
-  font-size: 18px;
-  font-weight: bold;
-  color: rgb(4, 0, 255);
-}
+/* * * QUIZZICAL TITLE H1 * * */
 
 .wrapper {
   display: grid;
@@ -188,13 +102,19 @@ non ne ho idea: #4D5B9E
 .wrapper > div {
   grid-area: 1/1/-1/-1;
 }
+
 .top {
   clip-path: polygon(0% 0%, 100% 0%, 100% 48%, 0% 58%);
 }
+
 .bottom {
   clip-path: polygon(0% 60%, 100% 50%, 100% 100%, 0% 100%);
   color: transparent;
-  background: -webkit-linear-gradient(177deg, #f5e0ff 53%, var(--text-color) 65%);
+  background: -webkit-linear-gradient(
+    177deg,
+    #f5e0ff 53%,
+    var(--text-color) 65%
+  );
   background: linear-gradient(177deg, #f5e0ff 53%, var(--text-color) 65%);
   background-clip: text;
   -webkit-background-clip: text;

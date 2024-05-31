@@ -12,3 +12,4 @@ function Home({startGame}) {
 }
 
 export default Home
+
